@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>My Personal Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .app-tile {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .app-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .app-tile h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        .app-tile p {
+            color: #666;
+            font-size: 14px;
+        }
+        .app-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>My Personal Dashboard</h1>
+    </div>
+    <div class="content">
+        <div class="dashboard" id="appDashboard"></div>
+    </div>
+    <div class="footer">
+        <p>© 2024 My Personal Dashboard | <a href="https://anandvip.github.io/conversion/ " target="_blank">currency convert</a> | <a href="#">Terms of Service</a></p>
+    </div>
+    <script>
+        const apps = [
+            { title: 'To-Do List', description: 'Manage your tasks', icon: '📝', color: '#e6f7ff', link: 'https://anandvip.github.io/todo-va/' },
+            { title: 'Notes', description: 'Quick note-taking', icon: '📘', color: '#e6ffe6', link: 'https://anandvip.github.io/notes-app-v12/' },
+            { title: 'Thought Mapper', description: 'Schedule your day', icon: '☁️☁️', color: '#fff5e6', link: 'https://anandvip.github.io/thought-map/' },
+            { title: 'Thought Clustering', description: 'Focus timer', icon: '⏲️', color: '#ffe6e6', link: 'https://anandvip.github.io/thought-mapper/' },
+            { title: 'FCA', description: 'Farm Contract Application', icon: '🌤️', color: '#e6e6ff', link: 'https://anandvip.github.io/fca/' },
+            { title: 'Meditation', description: 'Track daily Meditation habit', icon: '🧘🏾', color: '#ffe6f7', link: 'https://anandvip.github.io/mandal-30/' },
+           { title: 'ABPT', description: 'Advanced Blood Pressure Tracker', icon: '♥️', color: '#e6e6ff', link: 'https://anandvip.github.io/abpt-2/' },
+           { title: 'Journal', description: 'Markdown JOurnal', icon: '📝', color: '#e6ffe6', link: 'https://anandvip.github.io/blog-/' },
+               { title: 'family budget', description: 'budget tracker', icon: '📝', color: '#e6ffe6', link: 'https://anandvip.github.io/spendybuddy5' },     { title: 'spendybuddy', description: 'expenses tracker', icon: '📝', color: '#e6ffe6', link: 'https://anandvip.github.io/spendybuddy5/' },
+          { title: 'gpt4all', description: 'Local AI', icon: '📝', color: '#e6ffe6', link: 'open /Applications/gpt4all/maintenancetool.app' }, { title: 'Msty', description: 'ocal AI', icon: '📝', color: '#e6ffe6', link: 'https://anandvip.github.io/blog-/' }
+        ];
+        function createAppTile(app) {
+            return `
+                <a href="${app.link}" target="_blank" rel="noopener noreferrer" class="app-tile" style="background-color: ${app.color};">
+                    <div class="app-icon">${app.icon}</div>
+                    <h2>${app.title}</h2>
+                    <p>${app.description}</p>
+                </a>
+            `;
+        }
+        function renderDashboard() {
+            const dashboard = document.getElementById('appDashboard');
+            dashboard.innerHTML = apps.map(createAppTile).join('');
+        }
+        renderDashboard();
+    </script>
+</body>
+</html>
